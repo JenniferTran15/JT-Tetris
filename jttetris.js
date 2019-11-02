@@ -3,6 +3,8 @@ const context = canvas.getContext('2d');
 
 context.scale(20, 20);
 
+var grid = [];
+
 function arenaSweep() {
     let rowCount = 1;
     outer: for (let y = arena.length -1; y > 0; --y) {
@@ -190,7 +192,7 @@ function playerRotate(dir) {
 }
 
 let dropCounter = 0;
-let dropInterval = 1000;
+let dropInterval = 500;
 
 let lastTime = 0;
 function update(time = 0) {
@@ -218,22 +220,24 @@ document.addEventListener('keydown', event => {
         playerMove(1);
     } else if (event.keyCode === 40) {
         playerDrop();
-    } else if (event.keyCode === 81) {
+    } else if (event.keyCode === 38) {
         playerRotate(-1);
-    } else if (event.keyCode === 87) {
+    } else if (event.keyCode === 38) {
         playerRotate(1);
+    } else if (event.keyCode === 32) {
+        playerDrop();
     }
 });
 
 const colors = [
     null,
-    '#FF0D72',
-    '#0DC2FF',
-    '#0DFF72',
-    '#F538FF',
-    '#FF8E0D',
-    '#FFE138',
-    '#3877FF',
+    '#00f5ed',
+    '#fa970c',
+    '#0e16f0',
+    '#fff52e',
+    '#f71111',
+    '#3cf739',
+    '#900cf5',
 ];
 
 const arena = createMatrix(12, 20);
@@ -246,5 +250,4 @@ const player = {
 
 playerReset();
 updateScore();
-update();
 update();
