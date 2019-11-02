@@ -16,7 +16,7 @@
       #main{
         display: none;
       }
-      #newGame, #creditBtn, #backBtn{
+      #newGame, #creditBtn, #howToPlayBtn, #backBtn{
         text-align: center;
         vertical-align: middle;
         border: 2px solid white;
@@ -36,6 +36,16 @@
         font-size: 2em;
         font-family: "Courier New";
       }
+
+      #howToPlay{
+        margin: auto;
+        color: #26a6eb;
+        font-size: 1em;
+        font-family: "Courier New";
+        display: none;
+        background-color: inherit;
+      }
+
       #credits{
         margin: auto;
         color: #26a6eb;
@@ -52,6 +62,8 @@
 <body>
     <div id="theHead">Welcome to JT-Tetris!</div>
     <div id="newGame" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'grey'">New Game</div>
+    <div id="howToPlayBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'grey'" onclick="showhowToPlay()">How To Play</div>
+    <div id="howToPlay">This is a very simple version of tetris. The left arrow will move the pieces left. The right arrow will move the pieces right. The down arrow along with the spacebar will move the pieces down; holding it will make it go at an increase rate. The up arrow will rotate the pieces to your preference in how you want to place the pieces. The objective of the game is to create a full row across to clear the line. You will lose the game by letting the blocks build too high.</div>
     <div id="creditBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'grey'" onclick="showCredits()">Credits</div>
     <div id="credits">Tetris: Made by Jennifer Tran</div>
     <div id="backBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'grey'" onclick="goBack()">Back</div>
@@ -64,27 +76,47 @@
       var runGame = function(){
         document.getElementById("newGame").style.display = "none";
         document.getElementById("theHead").style.display = "none";
+        document.getElementById("howToPlayBtn").style.display = "none";
+        document.getElementById("howToPlay").style.display = "none";
+        document.getElementById("creditBtn").style.display = "none";
+
         
  document.getElementById("credits").style.display = "none";       
         document.getElementById("main").style.display = "block";
         document.getElementById("creditBtn").style.display = "none";
+        document.getElementById("howToPlayBtn").style.display = "none";
         playerReset();
         updateScore();
         update();
       };
+
+      var showhowToPlay = function(){
+        document.getElementById("howToPlayBtn").style.display = "none";
+        document.getElementById("theHead").style.display = "none";
+        document.getElementById("creditBtn").style.display = "none";
+        document.getElementById("credits").style.display = "none";
+        document.getElementById("howToPlay").style.display = "block";
+        document.getElementById("backBtn").style.display = "block";
+        document.getElementById("newGame").style.display = "none";
+      }
+
      var showCredits = function(){
        document.getElementById("theHead").style.display = "none";
        document.getElementById("creditBtn").style.display = "none";
        document.getElementById("newGame").style.display = "none";
+       document.getElementById("howToPlay").style.display = "none";
        document.getElementById("credits").style.display = "block";
+       document.getElementById("howToPlayBtn").style.display = "none";
        document.getElementById("backBtn").style.display = "block";
      };
       
     var goBack = function(){
       document.getElementById("backBtn").style.display = "none";
       document.getElementById("credits").style.display = "none";
+      document.getElementById("howToPlay").style.display = "none";
       document.getElementById("theHead").style.display = "block";
       document.getElementById("newGame").style.display = "block";
+      document.getElementById("howToPlayBtn").style.display = "block";
       document.getElementById("creditBtn").style.display = "block";
     };
     </script>
